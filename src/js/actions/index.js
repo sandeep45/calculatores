@@ -1,7 +1,1 @@
-export * from './phoneNumber'
-export * from './paginationLine'
-export * from './authentication'
-export * from './csvData'
-export * from './imageFile'
-export * from './modal'
 export * from './rental_calculator'

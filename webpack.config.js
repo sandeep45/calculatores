@@ -2,16 +2,14 @@ var webpack = require("webpack");
 var path = require("path");
 
 
-var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false')),
-  __X__: JSON.stringify(JSON.parse(process.env.X || 'false')),
+const definePlugin = new webpack.DefinePlugin({
+  TIMEOUT: JSON.stringify("100000")
 });
+
 
 module.exports = {
   devtool: "eval-source-map",
-  entry: "",
   entry: {
-    test: "./src/js/test.js",
     app: "./src/js/index.js"
   },
   output: {
@@ -32,7 +30,8 @@ module.exports = {
     }
   },
   plugins: [
-    devFlagPlugin
+    definePlugin,
+    new webpack.IgnorePlugin(/cptable/)
   ],
   module: {
     loaders: [

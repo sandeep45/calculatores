@@ -1,7 +1,7 @@
 {
-  "name": "rental_roi_calc",
+  "name": "calculators",
   "version": "1.0.0",
-  "description": "```` mkdir rental_roi_calc cd rental_roi_calc npm init touch README.md ```` #### Load Dependencies",
+  "description": "```` mkdir calculators cd calculators npm init touch README.md ```` #### Load Dependencies",
   "main": "webpack.config.js",
   "directories": {
     "test": "test"
@@ -77,12 +77,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sandeep45/rental_roi_calc.git"
+    "url": "git+https://github.com/sandeep45/calculators.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sandeep45/rental_roi_calc/issues"
+    "url": "https://github.com/sandeep45/calculators/issues"
   },
-  "homepage": "https://github.com/sandeep45/rental_roi_calc#readme"
+  "homepage": "https://github.com/sandeep45/calculators#readme"
 }

@@ -2,8 +2,8 @@ npm install redux-api-middleware --save
 #### Init the project
 
 ````
-mkdir rental_roi_calc
-cd rental_roi_calc
+mkdir calculators
+cd calculators
 npm init
 touch README.md
 ````

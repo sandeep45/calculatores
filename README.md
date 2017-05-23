@@ -3,7 +3,7 @@
 A redux project to serve as a template to start building a redux-react app.
 
 ````
-git clone https://github.com/sandeep45/rental_roi_calc.git
+git clone https://github.com/sandeep45/calculators.git
 npm install
 npm start
 ````

@@ -1,11 +1,13 @@
 var webpack = require("webpack");
+var path = require("path");
+
 
 module.exports = {
   devtool: "source-map",
   entry: "./src/js/index.js",
   output: {
     path: "./dist",
-    filename: "bundle.js",
+    filename: "app.bundle.js",
     publicPath: "/"
   },
   plugins: [
@@ -53,5 +55,11 @@ module.exports = {
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
     ]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js', '.json', '.coffee'],
+    root: [
+      path.resolve(__dirname, './src'),
+    ]
+  },
 };

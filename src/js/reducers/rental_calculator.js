@@ -1,7 +1,7 @@
 import K from 'js/constants/'
 
 const initialSate = {
-  sellingPrice: 100000,
+  sellingPrice: 250000,
   upfrontRepairPercentage: 0.08,
   closingCostPercentage: 0.03,
   downPaymentPercentage: 0.25,

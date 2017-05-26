@@ -116,9 +116,9 @@ class InputForm extends Component {
 
                 <tr>
                   <td> Selling Price </td>
-                  <td> &nbsp; </td>
+                  <td></td>
                   <td>
-                    <input type="number" className="form-control" placeholder="500000" autoFocus
+                    <input type="number" className="form-control" placeholder="the price at which you are buying the property" autoFocus
                       value={sellingPrice}
                       onChange={evt => updateSellingPrice(evt.target.value) } />
                   </td>

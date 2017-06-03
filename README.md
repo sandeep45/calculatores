@@ -1,71 +1,23 @@
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+pushing to s3
 
-A redux project to serve as a template to start building a redux-react app.
+`aws s3 sync ./dist s3://quick-calculators --profile sandeep45`
 
-````
-git clone https://github.com/sandeep45/calculators.git
-npm install
-npm start
-````
+https://s3.amazonaws.com/quick-calculators/index.html
 
-### It includes
+http://quick-calculators.s3-website-us-east-1.amazonaws.com/index.html
 
-A Phone Numbers index page with `pagination`, `isFetching` & `error` as shared components.
+http://d2569vm9ojezge.cloudfront.net/index.html
 
-Authentication is built in. This includes Components, Actions & Reducers.
+http://www.rentalcashflowcalculator.com/index.html
 
-Process & Analyze an uploaded CSV file.
+http://rentalcashflowcalculator.com/index.html
 
-A Generic component called `DropableZone`. It can be used as a parent container to handle dropping of files.
+`aws cloudfront create-invalidation --distribution-id E2I62KLS7VM16M --paths '/*' --profile sandeep45`
 
-`entities` & `paginate` as a generic reducer which will work for all models.
-
-thunks, routes, constants, normalizr are used & setup
-
-Tests are setup in `mocha` and asserted via `expect.js`
-
-WebUtil is setup with `axios`.
-
-Wizard style Bottom Nav to go back & forward between pages
-
-HighChart Component to render charts and update from state
-
-Added Tab based Navigation. It uses `withRouter`
-
-Added Code to upload an imAGE
-
-To run tests in debug mode use `npm run test:debug`, then use `repl` where u need to get a promt for evaluating variables.
-
-Added Flow.
-
-Bootstrap Modal Component to be used from redux.
-
-### Dependecies:
-
-A backend API server which responds to:
-
-- `http://localhost:3000/phone_numbers.json`
-- `http://localhost:3000/users/sign_in`
-- `http://localhost:3000/users`
-- `http://localhost:3000/users/password`
-- `http://localhost:3000/users/1/ads`
-
-### Customize
-
-- specify local storage key for storing app data in `index.js`
-  ```
-  sessionStorage.setItem("my-app-initial-data", JSON.stringify(store.getState()));
-  ```
--
+`
 
 
-###TODO:
-- Tooltip with image
-- Sorting in tables
-- watchman to run flow in real time
-- Webstorm - Read, Watch & Practice
-- Use local state in react component
-- add, show, update & delete of phone numbers
-- Route Animation
+
+
 
 

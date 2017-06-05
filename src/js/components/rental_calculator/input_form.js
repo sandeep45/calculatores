@@ -105,20 +105,13 @@ class InputForm extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th> Item </th>
-                  <th> Percentage </th>
-                  <th> Amount </th>
-                </tr>
-              </thead>
+            <table className="table table-bordered">
               <tbody className="">
 
-                <tr>
-                  <td> Selling Price </td>
-                  <td></td>
-                  <td>
+                <tr className="active">
+                  <th> Selling Price </th>
+                  <th></th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" autoFocus
@@ -126,7 +119,7 @@ class InputForm extends Component {
                              value={numeral(sellingPrice).format('0,0')}
                              onChange={evt => updateSellingPrice(evt.target.value) } />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
@@ -150,23 +143,23 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <th> Closing Cost </th>
-                  <th>
+                  <td> Closing Cost </td>
+                  <td>
                     <div className="input-group">
                       <input type="number" className="form-control" name="closingCostPercentage"
                              value={closingCostPercentage}
                              onChange={evt => updateClosingCostPercentage(evt.target.value) } />
                       <div className="input-group-addon">%</div>
                     </div>
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="closingCostAmount"
                              value={numeral(closingCostAmount).format('0,0')}
                              onChange={evt => updateClosingCostAmount(evt.target.value) } />
                     </div>
-                  </th>
+                  </td>
                 </tr>
 
                 <tr>
@@ -182,7 +175,7 @@ class InputForm extends Component {
                   </td>
                 </tr>
 
-                <tr>
+                <tr className="active">
                   <th> Down Payment </th>
                   <th>
                     <div className="input-group">
@@ -226,18 +219,25 @@ class InputForm extends Component {
                   <td> Finance Term</td>
                   <td></td>
                   <td>
-                    <input type="text" className="form-control" name="financeTerm"
-                           value={financeTerm}
-                           onChange={evt => updateFinanceTerm(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="text" className="form-control" name="financeTerm"
+                             value={financeTerm}
+                             onChange={evt => updateFinanceTerm(evt.target.value) } />
+                      <div className="input-group-addon">years</div>
+                    </div>
+
                   </td>
                 </tr>
 
                 <tr>
                   <td> Finance Rate</td>
                   <td>
-                    <input type="number" className="form-control" name="financeRate"
-                           value={financeRate}
-                           onChange={evt => updateFinanceRate(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="financeRate"
+                             value={financeRate}
+                             onChange={evt => updateFinanceRate(evt.target.value) } />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td></td>
                 </tr>
@@ -258,7 +258,7 @@ class InputForm extends Component {
                   </td>
                 </tr>
 
-                <tr>
+                <tr className="active">
                   <th> Total Out Of Pocket @ Closing</th>
                   <th></th>
                   <th>
@@ -271,26 +271,29 @@ class InputForm extends Component {
                   </th>
                 </tr>
 
-                <tr>
-                  <td> Monthly Mortgage Payment </td>
-                  <td></td>
-                  <td>
+                <tr className="active">
+                  <th> Monthly Mortgage Payment </th>
+                  <th></th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="monthlyMortgagePayment"
                              readOnly
                              value={numeral(mortgageAmount).format('0,0')} />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
                   <td> Annual Property Taxes</td>
                   <td></td>
                   <td>
-                    <input type="text" className="form-control" name="annualPropertyTaxes"
-                           value={numeral(annualPropertyTaxes).format('0,0')}
-                           onChange={evt => updateAnnualPropertyTaxes(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="annualPropertyTaxes"
+                             value={numeral(annualPropertyTaxes).format('0,0')}
+                             onChange={evt => updateAnnualPropertyTaxes(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
@@ -320,17 +323,17 @@ class InputForm extends Component {
                   </td>
                 </tr>
 
-                <tr>
-                  <td> Monthly Rent </td>
-                  <td></td>
-                  <td>
+                <tr className="active">
+                  <th> Monthly Rent </th>
+                  <th></th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="monthlyRent"
                              value={numeral(monthlyRent).format('0,0')}
                              onChange={evt => updateMonthlyRent(evt.target.value) } />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
@@ -354,12 +357,15 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <td> Vacancy Months </td>
+                  <td> Annual Vacancy</td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="vacancyMonths"
-                           value={vacancyMonths}
-                           onChange={evt => updateVacancyMonths(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="vacancyMonths"
+                             value={vacancyMonths}
+                             onChange={evt => updateVacancyMonths(evt.target.value) } />
+                      <div className="input-group-addon">months</div>
+                    </div>
                   </td>
                 </tr>
 
@@ -376,7 +382,7 @@ class InputForm extends Component {
                   </td>
                 </tr>
 
-                <tr>
+                <tr className="active">
                   <th> Annual Income </th>
                   <th></th>
                   <th>
@@ -389,7 +395,7 @@ class InputForm extends Component {
                   </th>
                 </tr>
 
-                <tr className={cashOnCashReturn >= 6 ? "success" : "danger" }>
+                <tr className="active">
                   <th> Cash on Cash Return</th>
                   <th>
                     <div className="input-group">
@@ -399,12 +405,12 @@ class InputForm extends Component {
                       <div className="input-group-addon">%</div>
                     </div>
                   </th>
-                  <th style={{verticalAlign: "middle"}} className="text-center lead">
+                  <th style={{verticalAlign: "middle"}} className="text-center lead text-info">
                     {cashOnCashReturn < 8 ? "Less than 8% makes me :-(" : "I :-) at 8% and higher"}
                   </th>
                 </tr>
 
-                <tr className={capRate >= 6 ? "success" : "danger" }>
+                <tr className="active">
                   <th> Cap Rate</th>
                   <th>
                     <div className="input-group">
@@ -414,7 +420,7 @@ class InputForm extends Component {
                       <div className="input-group-addon">%</div>
                     </div>
                   </th>
-                  <th style={{verticalAlign: "middle"}} className="text-center lead">
+                  <th style={{verticalAlign: "middle"}} className="text-center lead text-info">
                     {capRate < 6 ? "Less than 6% makes me :-(" : "I :-) at 6% and higher"}
                   </th>
                 </tr>

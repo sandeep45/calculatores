@@ -435,16 +435,16 @@ class InputForm extends Component {
 
   _cocComment = () => {
     const {cashOnCashReturn} = this.props;
-    if (cashOnCashReturn < 6){
+    if (cashOnCashReturn < 8){
       return (
         <span className="">
-          Less than 6% makes me <span className="text-danger">:-(</span>
+          Less than 8% makes me <span className="text-danger">:-(</span>
         </span>
       );
     }else {
       return (
         <span className="">
-          I <span className="text-primary">:-)</span> at 6% and higher
+          I <span className="text-primary">:-)</span> at 8% and higher
         </span>
       );
     }

@@ -47,7 +47,7 @@ export const getVacancyMonths = (state) => parseFloat(state.vacancyMonths);
 export const getFinancingType = (state) => state.financingType;
 
 export const getMonthlyOnGoingRepairAmount = (state) => {
-  return getMonthlyRent(state) * (getMonthlyOnGoingRepairPercentage(state)/100)
+  return (getMonthlyRent(state) * (getMonthlyOnGoingRepairPercentage(state)/100))  || 0
 };
 
 export const getUpfrontRepairAmount = (state) => {

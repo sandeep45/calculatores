@@ -105,7 +105,7 @@ class InputForm extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <table className="table">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th> Item </th>
@@ -113,7 +113,7 @@ class InputForm extends Component {
                   <th> Amount </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="">
 
                 <tr>
                   <td> Selling Price </td>
@@ -150,23 +150,23 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <td> Closing Cost </td>
-                  <td>
+                  <th> Closing Cost </th>
+                  <th>
                     <div className="input-group">
                       <input type="number" className="form-control" name="closingCostPercentage"
                              value={closingCostPercentage}
                              onChange={evt => updateClosingCostPercentage(evt.target.value) } />
                       <div className="input-group-addon">%</div>
                     </div>
-                  </td>
-                  <td>
+                  </th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="closingCostAmount"
                              value={numeral(closingCostAmount).format('0,0')}
                              onChange={evt => updateClosingCostAmount(evt.target.value) } />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
@@ -183,23 +183,23 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <td> Down Payment </td>
-                  <td>
+                  <th> Down Payment </th>
+                  <th>
                     <div className="input-group">
                       <input type="number" className="form-control" name="closingCostPercentage"
                              value={downPaymentPercentage}
                              onChange={evt => updateDownPaymentPercentage(evt.target.value) } />
                       <div className="input-group-addon">%</div>
                     </div>
-                  </td>
-                  <td>
+                  </th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="downPaymentAmount"
                              value={numeral(downPaymentAmount).format('0,0')}
                              onChange={evt => updateDownPaymentAmount(evt.target.value) } />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
@@ -259,16 +259,16 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <td> Total Out Of Pocket @ Closing</td>
-                  <td></td>
-                  <td>
+                  <th> Total Out Of Pocket @ Closing</th>
+                  <th></th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="totalOutOfPocketAmount"
                              readOnly
                              value={numeral(totalOutOfPocketAmount).format('0,0')} />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
                 <tr>
@@ -377,43 +377,46 @@ class InputForm extends Component {
                 </tr>
 
                 <tr>
-                  <td> Annual Income </td>
-                  <td></td>
-                  <td>
+                  <th> Annual Income </th>
+                  <th></th>
+                  <th>
                     <div className="input-group">
                       <div className="input-group-addon">$</div>
                       <input type="text" className="form-control" name="annualIncome"
                              value={numeral(annualIncome).format('0,0')}
                              readOnly />
                     </div>
-                  </td>
+                  </th>
                 </tr>
 
-                <tr>
-                  <td> Cash on Cash Return</td>
-                  <td>
+                <tr className={cashOnCashReturn >= 6 ? "success" : "danger" }>
+                  <th> Cash on Cash Return</th>
+                  <th>
                     <div className="input-group">
                       <input type="number" className="form-control" name="cashOnCashReturn"
                              value={numeral(cashOnCashReturn).format('0.00')}
                              readOnly />
                       <div className="input-group-addon">%</div>
                     </div>
-                  </td>
-                  <td></td>
+                  </th>
+                  <th style={{verticalAlign: "middle"}} className="text-center lead">
+                    {cashOnCashReturn < 8 ? "Less than 8% makes me :-(" : "I :-) at 8% and higher"}
+                  </th>
                 </tr>
 
-                <tr>
-                  <td> Cap Rate</td>
-                  <td>
+                <tr className={capRate >= 6 ? "success" : "danger" }>
+                  <th> Cap Rate</th>
+                  <th>
                     <div className="input-group">
                       <input type="number" className="form-control" name="capRate"
                              value={numeral(capRate).format('0.00')}
                              readOnly />
                       <div className="input-group-addon">%</div>
                     </div>
-
-                  </td>
-                  <td></td>
+                  </th>
+                  <th style={{verticalAlign: "middle"}} className="text-center lead">
+                    {capRate < 6 ? "Less than 6% makes me :-(" : "I :-) at 6% and higher"}
+                  </th>
                 </tr>
 
               </tbody>

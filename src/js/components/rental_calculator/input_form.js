@@ -364,7 +364,7 @@ class InputForm extends Component {
                       <input type="number" className="form-control" name="vacancyMonths"
                              value={vacancyMonths}
                              onChange={evt => updateVacancyMonths(evt.target.value) } />
-                      <div className="input-group-addon">months</div>
+                      <div className="input-group-addon">{vacancyMonths == 1 ? "month" : "months"}</div>
                     </div>
                   </td>
                 </tr>
@@ -405,8 +405,8 @@ class InputForm extends Component {
                       <div className="input-group-addon">%</div>
                     </div>
                   </th>
-                  <th style={{verticalAlign: "middle"}} className="text-center lead text-info">
-                    {cashOnCashReturn < 8 ? "Less than 8% makes me :-(" : "I :-) at 8% and higher"}
+                  <th style={{verticalAlign: "middle"}} className="text-center lead text-muted">
+                    {this._cocComment()}
                   </th>
                 </tr>
 
@@ -420,8 +420,8 @@ class InputForm extends Component {
                       <div className="input-group-addon">%</div>
                     </div>
                   </th>
-                  <th style={{verticalAlign: "middle"}} className="text-center lead text-info">
-                    {capRate < 6 ? "Less than 6% makes me :-(" : "I :-) at 6% and higher"}
+                  <th style={{verticalAlign: "middle"}} className="text-center lead text-muted">
+                    {this._capRateComment()}
                   </th>
                 </tr>
 
@@ -431,6 +431,40 @@ class InputForm extends Component {
         </div>
       </div>
     );
+  };
+
+  _cocComment = () => {
+    const {cashOnCashReturn} = this.props;
+    if (cashOnCashReturn < 6){
+      return (
+        <span className="">
+          Less than 6% makes me <span className="text-danger">:-(</span>
+        </span>
+      );
+    }else {
+      return (
+        <span className="">
+          I <span className="text-primary">:-)</span> at 6% and higher
+        </span>
+      );
+    }
+  };
+
+  _capRateComment = () => {
+    const {capRate} = this.props;
+    if (capRate < 6){
+      return (
+        <span className="">
+          Less than 6% makes me <span className="text-danger">:-(</span>
+        </span>
+      );
+    }else {
+      return (
+        <span className="">
+          I <span className="text-primary">:-)</span> at 6% and higher
+        </span>
+      );
+    }
   };
 };
 

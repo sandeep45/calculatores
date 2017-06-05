@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import numeral from 'numeral'
 
 class InputForm extends Component {
   constructor(props) {
@@ -118,37 +119,53 @@ class InputForm extends Component {
                   <td> Selling Price </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" placeholder="the price at which you are buying the property" autoFocus
-                      value={sellingPrice}
-                      onChange={evt => updateSellingPrice(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" autoFocus
+                             placeholder="the price at which you are buying the property"
+                             value={numeral(sellingPrice).format('0,0')}
+                             onChange={evt => updateSellingPrice(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Upfront Repair </td>
                   <td>
-                    <input type="number" className="form-control" name="upfrontRepairPercentage"
-                           value={upfrontRepairPercentage}
-                           onChange={evt => updateUpfrontRepairPercentage(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="upfrontRepairPercentage"
+                             value={upfrontRepairPercentage}
+                             onChange={evt => updateUpfrontRepairPercentage(evt.target.value) } />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td>
-                    <input type="number" className="form-control" name="upfrontRepairAmount"
-                           value={upfrontRepairAmount}
-                           onChange={evt => updateUpfrontRepairAmount(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="upfrontRepairAmount"
+                             value={numeral(upfrontRepairAmount).format('0,0')}
+                             onChange={evt => updateUpfrontRepairAmount(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Closing Cost </td>
                   <td>
-                    <input type="number" className="form-control" name="closingCostPercentage"
-                           value={closingCostPercentage}
-                           onChange={evt => updateClosingCostPercentage(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="closingCostPercentage"
+                             value={closingCostPercentage}
+                             onChange={evt => updateClosingCostPercentage(evt.target.value) } />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td>
-                    <input type="number" className="form-control" name="closingCostAmount"
-                           value={closingCostAmount}
-                           onChange={evt => updateClosingCostAmount(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="closingCostAmount"
+                             value={numeral(closingCostAmount).format('0,0')}
+                             onChange={evt => updateClosingCostAmount(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
@@ -156,34 +173,52 @@ class InputForm extends Component {
                   <td> Cost of Property </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="costOfPropertyAmount" readOnly disabled
-                           value={costOfPropertyAmount} />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="costOfPropertyAmount"
+                             readOnly
+                             value={numeral(costOfPropertyAmount).format('0,0')} />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Down Payment </td>
                   <td>
-                    <input type="number" className="form-control" name="closingCostPercentage"
-                           value={downPaymentPercentage}
-                           onChange={evt => updateDownPaymentPercentage(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="closingCostPercentage"
+                             value={downPaymentPercentage}
+                             onChange={evt => updateDownPaymentPercentage(evt.target.value) } />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td>
-                    <input type="number" className="form-control" name="downPaymentAmount"
-                           value={downPaymentAmount}
-                           onChange={evt => updateDownPaymentAmount(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="downPaymentAmount"
+                             value={numeral(downPaymentAmount).format('0,0')}
+                             onChange={evt => updateDownPaymentAmount(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Financed Amount </td>
                   <td>
-                    <input type="number" className="form-control" name="financedPercentage" readOnly
-                           value={financedPercentage} />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="financedPercentage"
+                             readOnly
+                             value={financedPercentage} />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td>
-                    <input type="number" className="form-control" name="financedAmount" readOnly
-                           value={financedAmount} />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="financedAmount"
+                             readOnly
+                             value={numeral(financedAmount).format('0,0')} />
+                    </div>
                   </td>
                 </tr>
 
@@ -191,7 +226,7 @@ class InputForm extends Component {
                   <td> Finance Term</td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="financeTerm"
+                    <input type="text" className="form-control" name="financeTerm"
                            value={financeTerm}
                            onChange={evt => updateFinanceTerm(evt.target.value) } />
                   </td>
@@ -227,8 +262,12 @@ class InputForm extends Component {
                   <td> Total Out Of Pocket @ Closing</td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="totalOutOfPocketAmount" readOnly
-                           value={totalOutOfPocketAmount} />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="totalOutOfPocketAmount"
+                             readOnly
+                             value={numeral(totalOutOfPocketAmount).format('0,0')} />
+                    </div>
                   </td>
                 </tr>
 
@@ -236,8 +275,12 @@ class InputForm extends Component {
                   <td> Monthly Mortgage Payment </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyMortgagePayment" readOnly
-                           value={mortgageAmount} />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="monthlyMortgagePayment"
+                             readOnly
+                             value={numeral(mortgageAmount).format('0,0')} />
+                    </div>
                   </td>
                 </tr>
 
@@ -245,8 +288,8 @@ class InputForm extends Component {
                   <td> Annual Property Taxes</td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="annualPropertyTaxes"
-                           value={annualPropertyTaxes}
+                    <input type="text" className="form-control" name="annualPropertyTaxes"
+                           value={numeral(annualPropertyTaxes).format('0,0')}
                            onChange={evt => updateAnnualPropertyTaxes(evt.target.value) } />
                   </td>
                 </tr>
@@ -255,9 +298,12 @@ class InputForm extends Component {
                   <td> Monthly HOA </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyHOA"
-                           value={monthlyHOA}
-                           onChange={evt => updateMonthlyHOA(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="monthlyHOA"
+                             value={numeral(monthlyHOA).format('0,0')}
+                             onChange={evt => updateMonthlyHOA(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
@@ -265,9 +311,12 @@ class InputForm extends Component {
                   <td> Annual Insurance </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="annualInsurance"
-                           value={annualInsurance}
-                           onChange={evt => updateAnnualInsurance(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="annualInsurance"
+                             value={numeral(annualInsurance).format('0,0')}
+                             onChange={evt => updateAnnualInsurance(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
@@ -275,23 +324,32 @@ class InputForm extends Component {
                   <td> Monthly Rent </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyRent"
-                           value={monthlyRent}
-                           onChange={evt => updateMonthlyRent(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="monthlyRent"
+                             value={numeral(monthlyRent).format('0,0')}
+                             onChange={evt => updateMonthlyRent(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Monthly On-going Repair </td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyOnGoingRepairPercentage"
-                           value={monthlyOnGoingRepairPercentage}
-                           onChange={evt => updateMonthlyOnGoingRepairPercentage(evt.target.value) } />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="monthlyOnGoingRepairPercentage"
+                             value={monthlyOnGoingRepairPercentage}
+                             onChange={evt => updateMonthlyOnGoingRepairPercentage(evt.target.value) } />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyOnGoingRepairAmount"
-                           value={monthlyOnGoingRepairAmount}
-                           onChange={evt => updateMonthlyOnGoingRepairAmount(evt.target.value) } />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="monthlyOnGoingRepairAmount"
+                             value={numeral(monthlyOnGoingRepairAmount).format('0,0')}
+                             onChange={evt => updateMonthlyOnGoingRepairAmount(evt.target.value) } />
+                    </div>
                   </td>
                 </tr>
 
@@ -309,8 +367,12 @@ class InputForm extends Component {
                   <td> Monthly Income </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="monthlyIncome"
-                           value={monthlyIncome} readOnly />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="monthlyIncome"
+                             value={numeral(monthlyIncome).format('0,0')}
+                             readOnly />
+                    </div>
                   </td>
                 </tr>
 
@@ -318,16 +380,24 @@ class InputForm extends Component {
                   <td> Annual Income </td>
                   <td></td>
                   <td>
-                    <input type="number" className="form-control" name="annualIncome"
-                           value={annualIncome} readOnly />
+                    <div className="input-group">
+                      <div className="input-group-addon">$</div>
+                      <input type="text" className="form-control" name="annualIncome"
+                             value={numeral(annualIncome).format('0,0')}
+                             readOnly />
+                    </div>
                   </td>
                 </tr>
 
                 <tr>
                   <td> Cash on Cash Return</td>
                   <td>
-                    <input type="number" className="form-control" name="cashOnCashReturn"
-                           value={cashOnCashReturn} readOnly />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="cashOnCashReturn"
+                             value={numeral(cashOnCashReturn).format('0.00')}
+                             readOnly />
+                      <div className="input-group-addon">%</div>
+                    </div>
                   </td>
                   <td></td>
                 </tr>
@@ -335,8 +405,13 @@ class InputForm extends Component {
                 <tr>
                   <td> Cap Rate</td>
                   <td>
-                    <input type="number" className="form-control" name="capRate"
-                           value={capRate} readOnly />
+                    <div className="input-group">
+                      <input type="number" className="form-control" name="capRate"
+                             value={numeral(capRate).format('0.00')}
+                             readOnly />
+                      <div className="input-group-addon">%</div>
+                    </div>
+
                   </td>
                   <td></td>
                 </tr>

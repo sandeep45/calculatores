@@ -2,16 +2,16 @@ import K from 'js/constants/'
 
 const initialSate = {
   sellingPrice: 250000,
-  upfrontRepairPercentage: 0.08,
-  closingCostPercentage: 0.03,
-  downPaymentPercentage: 0.25,
+  upfrontRepairPercentage: 8.0,
+  closingCostPercentage: 3.0,
+  downPaymentPercentage: 25.0,
   financeTerm: 30,
-  financeRate: .03,
+  financeRate: 3.0,
   annualPropertyTaxes: 2000,
   monthlyHOA: 200,
   annualInsurance: 100,
   monthlyRent: 1695,
-  monthlyOnGoingRepairPercentage: 0.05,
+  monthlyOnGoingRepairPercentage: 5.0,
   vacancyMonths: 1,
   financingType: "principleAndInterest"
 };
@@ -47,19 +47,19 @@ export const getVacancyMonths = (state) => parseFloat(state.vacancyMonths);
 export const getFinancingType = (state) => state.financingType;
 
 export const getMonthlyOnGoingRepairAmount = (state) => {
-  return getMonthlyRent(state) * getMonthlyOnGoingRepairPercentage(state)
+  return getMonthlyRent(state) * (getMonthlyOnGoingRepairPercentage(state)/100)
 };
 
 export const getUpfrontRepairAmount = (state) => {
-  return getSellingPrice(state) * getUpfrontRepairPercentage(state)
+  return getSellingPrice(state) * (getUpfrontRepairPercentage(state)/100)
 };
 
 export const getClosingCostAmount = (state) => {
-  return getSellingPrice(state) * getClosingCostPercentage(state)
+  return getSellingPrice(state) * (getClosingCostPercentage(state)/100)
 };
 
 export const getDownPaymentAmount = (state) => {
-  return getSellingPrice(state) * getDownPaymentPercentage(state)
+  return getSellingPrice(state) * (getDownPaymentPercentage(state)/100)
 };
 
 export const getTotalOutOfPocketAmount = (state) => {
@@ -77,18 +77,18 @@ export const getFinancedAmount = (state) => {
 };
 
 export const getFinancedPercentage = (state) => {
-  return 1 - getDownPaymentPercentage(state);
+  return 100 - getDownPaymentPercentage(state);
 };
 
 export const getMortageAmount = (state) => {
   const financingType = getFinancingType(state);
   if(financingType == "principleAndInterest"){
     const p = getFinancedAmount(state); //principle / initial amount borrowed
-    const i = getFinanceRate(state) / 12;  //monthly interest rate
+    const i = (getFinanceRate(state)/100) / 12;  //monthly interest rate
     const n = getFinanceTerm(state) * 12; //number of payments months
     return p * i * (Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
   }else if(financingType == "interestOnly"){
-    return (getFinancedAmount(state) * getFinanceRate(state))/12;
+    return (getFinancedAmount(state) * (getFinanceRate(state)/100) )/12;
   }else {
     return 0;
   }
@@ -106,10 +106,10 @@ export const getAnnualIncome = (state) => {
     (getMortageAmount(state)*12);
 };
 
-export const getCashOnCashReturn = (state) => getAnnualIncome(state)/getTotalOutOfPocketAmount(state);
+export const getCashOnCashReturn = (state) => getAnnualIncome(state)/getTotalOutOfPocketAmount(state) * 100;
 
 export const getCapRate = (state) => {
   return ( (getMonthlyRent(state)*(12-getVacancyMonths(state))) - getAnnualPropertyTaxes(state) -
            (getMonthlyHOA(state)*12) - getAnnualInsurance(state)/12 -
-           (getMonthlyOnGoingRepairAmount(state)*12) ) / getCostOfPropertyAmount(state);
-}
+           (getMonthlyOnGoingRepairAmount(state)*12) ) / getCostOfPropertyAmount(state) * 100;
+};

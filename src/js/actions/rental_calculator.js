@@ -1,5 +1,6 @@
 import K from '../constants/'
 import * as reducers from '../reducers'
+import numeral from 'numeral'
 
 export const updateRentalCalculatorItem = (itemName, itemValue) => {
   return {
@@ -14,7 +15,7 @@ export const updateSellingPrice = (amt = 0) => {
   return {
     type: K.UPDATE_RENTAL_CALCULATOR_ITEM,
     payload: {
-      "sellingPrice": amt
+      "sellingPrice": numeral(amt).value()
     },
   }
 };
@@ -41,7 +42,7 @@ export const updateAnnualPropertyTaxes = (amt = 2000) => {
   return {
     type: K.UPDATE_RENTAL_CALCULATOR_ITEM,
     payload: {
-      "annualPropertyTaxes": amt
+      "annualPropertyTaxes": numeral(amt).value()
     },
   }
 };
@@ -50,7 +51,7 @@ export const updateMonthlyHOA = (amt = 200) => {
   return {
     type: K.UPDATE_RENTAL_CALCULATOR_ITEM,
     payload: {
-      "monthlyHOA": amt
+      "monthlyHOA": numeral(amt).value()
     },
   }
 };
@@ -59,7 +60,7 @@ export const updateAnnualInsurance = (amt = 100) => {
   return {
     type: K.UPDATE_RENTAL_CALCULATOR_ITEM,
     payload: {
-      "annualInsurance": amt
+      "annualInsurance": numeral(amt).value()
     },
   }
 };
@@ -68,7 +69,7 @@ export const updateMonthlyRent = (amt = 1600) => {
   return {
     type: K.UPDATE_RENTAL_CALCULATOR_ITEM,
     payload: {
-      "monthlyRent": amt
+      "monthlyRent": numeral(amt).value()
     },
   }
 };
@@ -128,29 +129,33 @@ export const updateFinancingType = (type = "principleAndInterest") => {
 };
 
 export const updateMonthlyOnGoingRepairAmount = (amount = 0)=> (dispatch, getState) => {
+  amount = numeral(amount).value();
   const state = getState();
   const monthlyRent = reducers.getMonthlyRent(state);
-  const monthlyOnGoinRepairPercentage = amount/monthlyRent;
+  const monthlyOnGoinRepairPercentage = amount/monthlyRent * 100;
   dispatch(updateMonthlyOnGoingRepairPercentage(monthlyOnGoinRepairPercentage));
 };
 
 export const updateUpfrontRepairAmount = (upfrontRepairAmount=0) => (dispatch, getState) => {
+  upfrontRepairAmount = numeral(upfrontRepairAmount).value();
   const state = getState();
   const sellingPrice = reducers.getSellingPrice(state);
-  const upfrontRepairPercentage = upfrontRepairAmount/sellingPrice;
+  const upfrontRepairPercentage = upfrontRepairAmount/sellingPrice * 100;
   dispatch(updateUpfrontRepairPercentage(upfrontRepairPercentage));
 };
 
 export const updateDownPaymentAmount = (downPaymentAmount=0) => (dispatch, getState) => {
+  downPaymentAmount = numeral(downPaymentAmount).value();
   const state = getState();
   const sellingPrice = reducers.getSellingPrice(state);
-  const downPaymentPercentage = downPaymentAmount/sellingPrice;
+  const downPaymentPercentage = downPaymentAmount/sellingPrice * 100;
   dispatch(updateDownPaymentPercentage(downPaymentPercentage));
 };
 
 export const updateClosingCostAmount = (closingCostAmount=0) => (dispatch, getState) => {
+  closingCostAmount = numeral(closingCostAmount).value();
   const state = getState();
   const sellingPrice = reducers.getSellingPrice(state);
-  const closingCostPercentage = closingCostAmount/sellingPrice;
+  const closingCostPercentage = closingCostAmount/sellingPrice * 100;
   dispatch(updateClosingCostPercentage(closingCostPercentage));
 };
